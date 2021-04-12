@@ -30,6 +30,18 @@ export const getById = id => {
     return filteredMovies[0];
 }
 
+// 새로운 영화 추가하기
+export const addMovie = (name, score) => {
+    const newMovie = {
+        id: `${movies.length + 1}`,
+        name,
+        score
+    };
+
+    movies.push(newMovie);
+    return newMovie;
+}
+
 // 해당 id 영화 지우기
 export const deleteMovie = id => {
     const cleanMovies = movies.filter(movie => movie.id !== id);

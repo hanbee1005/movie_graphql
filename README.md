@@ -14,6 +14,9 @@ Schema
 Resolver
 : Schema에 대한 요청이 오는 경우 어떤 처리를 할지에 대한 방법을 구현
 
+Mutation
+: Database의 상태가 변할 떄 사용되는 정보
+
 ## 프로젝트 설정
 - movie_graphql 이라는 이름의 디렉토리를 생성
 - github 에 같은 이름의 리포지토리를 생성
