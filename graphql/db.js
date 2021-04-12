@@ -1,54 +1,17 @@
-let movies = [
-    {
-        id: 0,
-        name: "Star Wars - The new one",
-        score: 1
-    },
-    {
-        id: 1,
-        name: "Avengers - The new one",
-        score: 10
-    },
-    {
-        id: 2,
-        name: "The Godfather I",
-        score: 9
-    },
-    {
-        id: 3,
-        name: "Logan",
-        score: 4
+import fetch from "node-fetch";
+
+const API_URL = "https://yts.am/api/v2/list_movies.json?";
+
+export const getMovies = (limit, rating) => {
+    let REQUEST_URL = API_URL;
+    if (limit > 0) {
+        REQUEST_URL += `limit=${limit}`;
     }
-];
-
-// 전체 영화 조회하기
-export const getMovies = () => movies;
-
-// id 로 영화 조회하기
-export const getById = id => {
-    const filteredMovies = movies.filter(movie => movie.id === id);
-    return filteredMovies[0];
-}
-
-// 새로운 영화 추가하기
-export const addMovie = (name, score) => {
-    const newMovie = {
-        id: `${movies.length + 1}`,
-        name,
-        score
-    };
-
-    movies.push(newMovie);
-    return newMovie;
-}
-
-// 해당 id 영화 지우기
-export const deleteMovie = id => {
-    const cleanMovies = movies.filter(movie => movie.id !== id);
-    if (movies.length > cleanMovies.length) {
-        movies = cleanMovies;
-        return true;
-    } else {
-        return false;
+    if (rating > 0) {
+        REQUEST_URL += `minimum_rating=${rating}`;
     }
+
+    return fetch(REQUEST_URL)
+        .then(res => res.json())
+        .then(json => json.data.movies);
 }
