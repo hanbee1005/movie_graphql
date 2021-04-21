@@ -23,3 +23,5 @@ Mutation
 - 디렉토리 내부에서 yarn init 명령어로 기본 package.json 구성
 - git 설정하기 (remote repository 연결)
 - yarn add graphql-yoga 명령어로 설치
+- yarn start 로 서버 실행하고
+- http://localhost:4000으로 접속하기
